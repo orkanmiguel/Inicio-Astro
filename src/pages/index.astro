@@ -1,16 +1,33 @@
 ---
+import NavBar from "../components/NavBar.astro"
+import MainLayout from "../layouts/MainLayout.astro"
 
+// Server Only
+const name = 'OrkaN'
 ---
+<MainLayout title="Home Page">
+	<h1>{name}</h1>
+	<p>Momento Actual: {new Date().toLocaleTimeString()}</p>
+	<p id="time"> </p>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+	<footer>
+		2003
+	</footer>
+
+	
+	<script>
+		const currentTime: String = new Date().toLocaleTimeString();
+
+		const time = document.querySelector('#time') as HTMLElement;
+		time.innerText = `Momento Actual: ${currentTime}`
+	</script>
+
+	<script>
+		const currentYear: number = new Date().getFullYear();
+
+		const footer = document.querySelector('footer') as HTMLElement;
+		footer.innerText = `Año: ${currentYear}`
+	</script>
+</MainLayout>
+		
+
